@@ -1,0 +1,12 @@
+<div class="container row justify-content-center">
+    <div class="col-7">
+        <div class="card my-4">
+            
+            <ul class="list-group list-group-flush">
+                <div *ngFor="let noti of notis">
+                    <li class="list-group-item">Task {{ noti.status }} by {{ noti.by }} in {{ noti.in }}</li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>

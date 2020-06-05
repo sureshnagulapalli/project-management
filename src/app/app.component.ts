@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'project-management';
+  display: String = 'home';
+
+
+  onClick(e: any) {
+    this.display = e.target.innerText;
+  }
 }

@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  display: String = 'Home';
+
+  onClick(dis: String) {
+    this.display = dis;
+  }
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }

@@ -1,7 +1,10 @@
 <nav class="nav nav-tabs justify-content-center">
-    <a class="nav-link" href="#">Home</a>
-    <a class="nav-link" href="#">Notifications</a>
+    <a class="nav-link" href="#" (click)="onClick('Home')" [ngClass]="{active: display == 'Home'}">Home</a>
+    <a class="nav-link" href="#" (click)="onClick('Notifications')" [ngClass]="{active: display == 'Notifications'}">Notifications</a>
 </nav>
+
+<app-home-base *ngIf="display=='Home'"></app-home-base>
+<app-home-notifications *ngIf="display=='Notifications'"></app-home-notifications>
 
 
 

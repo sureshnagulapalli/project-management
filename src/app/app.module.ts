@@ -6,6 +6,8 @@ import { NavMainComponent } from './nav-main/nav-main.component';
 import { HomeComponent } from './home/home.component';
 import { ProjectComponent } from './project/project.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { HomeBaseComponent } from './home/home-base/home-base.component';
+import { HomeNotificationsComponent } from './home/home-notifications/home-notifications.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { TasksComponent } from './tasks/tasks.component';
     NavMainComponent,
     HomeComponent,
     ProjectComponent,
-    TasksComponent
+    TasksComponent,
+    HomeBaseComponent,
+    HomeNotificationsComponent
   ],
   imports: [
     BrowserModule
