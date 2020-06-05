@@ -1,6 +1,32 @@
 <nav class="nav nav-tabs justify-content-center">
-    <a class="nav-link" href="#">My Tasks</a>
-    <a class="nav-link" href="#">My New</a>
-    <a class="nav-link" href="#">My In Progress</a>
-    <a class="nav-link" href="#">My Done</a>
+    <a class="nav-link text-secondary" href="#" (click)="onClick('self')">My Individual Tasks</a>
+    <a class="nav-link text-secondary" href="#" (click)="onClick('project')">My Project Tasks</a>
+    <a class="nav-link text-secondary" href="#" (click)="onClick('all')">All Tasks</a>
 </nav>
+
+
+<div class="container mt-4">
+    <h5>Current</h5>
+    <div *ngFor="let current of current_tasks">
+        <div class="alert alert-primary" role="alert" *ngIf="current.category == show || show=='all'">
+            {{ current.id }} {{ current.name }} {{ current.created_at }} {{ current.complete_by }}
+            <a class="text-dark">todo</a>
+            <a class="text-success">done</a>
+        </div>
+    </div>
+    <h5>New</h5>
+    <div *ngFor="let new of new_tasks">
+        <div class="alert alert-dark" role="alert" *ngIf="new.category == show  || show=='all'">
+            {{ new.id }} {{ new.name }} {{ new.created_at }} {{ new.complete_by }}  
+            <a class="text-danger">current</a> 
+            <a class="text-success">done</a>  
+        </div>
+    </div>
+    <h5>Done</h5>
+    <div *ngFor="let done of done_tasks">
+        <div class="alert alert-success" role="alert" *ngIf="done.category == show  || show=='all'">
+            {{ done.id }} {{ done.name }} {{ done.created_at }} {{ done.complete_by }}  
+            <a class="text-danger">current</a>
+        </div>
+    </div>
+</div>

@@ -1,17 +1,24 @@
 
 <div class="row vh-100">
-  <div class="col-2">
-    <app-nav-main></app-nav-main>
-    <button class="btn btn-outline-primary" (click)="onClick($event)">home</button>
-    <button class="btn btn-outline-primary" (click)="onClick($event)">tasks</button>
-    <button class="btn btn-outline-primary" (click)="onClick($event)">project</button>
+  <div class="col-2 bg-secondary">
+    <nav class="navbar flex-column">
+      <a class="navbar-brand text-light" href="#" (click)="onClick($event)">ProGeNt</a>
+      <nav class="nav flex-column">
+        <a class="nav-link text-light" href="#" (click)="onClick($event)">home</a>
+        <a class="nav-link text-light" href="#" (click)="onClick($event)">tasks</a>
+        <a class="nav-link text-light" href="#" (click)="onClick($event)">project</a>
+      </nav>
+    </nav>
   </div>
 
-
-  <div class="col-9 bg-light">
-    <app-home *ngIf="display=='home'"></app-home>
+  <div class="col-10 bg-white">
+    <div class="row">
+      <div class="col-11">
+        <app-home *ngIf="display=='home'"></app-home>
+        <app-tasks *ngIf="display=='tasks'"></app-tasks>
+      </div>
+    </div>
     <app-project *ngIf="display=='project'"></app-project>
-    <app-tasks *ngIf="display=='tasks'"></app-tasks>
   </div>
 </div>
 

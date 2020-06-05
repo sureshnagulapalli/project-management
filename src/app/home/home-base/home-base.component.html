@@ -4,10 +4,10 @@
             <h3>Projects</h3>
         </div>
         <div class="col-1">
-            <button class="btn btn-outline-success">add</button>
+            <button class="btn btn-outline-success mt-1">add</button>
         </div>
         <div class="col">
-            <button class="btn btn-outline-danger">delete</button>
+            <button class="btn btn-outline-danger mt-1">delete</button>
         </div>
     </div>
     <div class="container mt-3">
@@ -37,14 +37,6 @@
                 {{ current.id }} {{ current.name }} {{ current.created_at }} {{ current.complete_by }}
                 <a class="text-dark">todo</a>
                 <a class="text-success">done</a>
-            </div>
-        </div>
-        <h5>New</h5>
-        <div *ngFor="let new of new_tasks">
-            <div class="alert alert-secondary" role="alert">
-                {{ new.id }} {{ new.name }} {{ new.created_at }} {{ new.complete_by }}  
-                <a class="text-warning">current</a> 
-                <a class="text-success">done</a>  
             </div>
         </div>
     </div>

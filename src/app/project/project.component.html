@@ -1,7 +1,46 @@
 <nav class="nav nav-tabs justify-content-center">
-    <a class="nav-link" href="#">All Tasks</a>
-    <a class="nav-link" href="#">New</a>
-    <a class="nav-link" href="#">In Progress</a>
-    <a class="nav-link" href="#">Done</a>
-    <a class="nav-link" href="#">Chat Box</a>
+    <a class="nav-link text-secondary" href="#" (click)="onClick('tasks')">Tasks</a>
+    <a class="nav-link text-secondary" href="#" (click)="onClick('notif')">Notification</a>
+    <a class="nav-link text-secondary" href="#" (click)="onClick('chat')">Chat Box</a>
 </nav>
+
+<div class="row">
+    <div [ngClass]="{ 'col-9 ' : chat, 'col-11' : !chat}">
+        <div class="container mt-4 ml-0">
+            <h5>Current</h5>
+            <div *ngFor="let current of current_tasks">
+                <div class="alert alert-primary" role="alert">
+                    {{ current.id }} {{ current.name }} {{ current.created_at }} {{ current.complete_by }}
+                    <a class="text-success">done</a>
+                    <a class="text-dark">todo</a>
+                </div>
+            </div>
+            <h5>New</h5>
+            <div *ngFor="let new of new_tasks">
+                <div class="alert alert-dark" role="alert">
+                    {{ new.id }} {{ new.name }} {{ new.created_at }} {{ new.complete_by }}  
+                    <a class="text-danger">current</a>
+                    <a class="text-success">done</a>
+                </div>
+            </div>
+            <h5>Done</h5>
+            <div *ngFor="let done of done_tasks">
+                <div class="alert alert-success" role="alert">
+                    {{ done.id }} {{ done.name }} {{ done.created_at }} {{ done.complete_by }}  
+                    <a class="text-danger">current</a>
+                    <a class="text-dark">todo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div [ngClass]="{ 'col' : chat, 'd-none' : !chat}" class="border">
+        <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+          </div>
+        
+    </div>
+</div>
