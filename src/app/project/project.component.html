@@ -4,43 +4,91 @@
     <a class="nav-link text-secondary" href="#" (click)="onClick('chat')">Chat Box</a>
 </nav>
 
+
+
 <div class="row">
     <div [ngClass]="{ 'col-9 ' : chat, 'col-11' : !chat}">
         <div class="container mt-4 ml-0">
+            <form>
+                <div class="form-row">
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="You can assign a task here">
+                    </div>
+                    <div class="col">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">@</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <input type="date" class="form-control" placeholder="due by">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-outline-secondary">Submit</button>
+                    </div>
+                </div>
+            </form>
+            <hr>
             <h5>Current</h5>
-            <div *ngFor="let current of current_tasks">
-                <div class="alert alert-primary" role="alert">
-                    {{ current.id }} {{ current.name }} {{ current.created_at }} {{ current.complete_by }}
-                    <a class="text-success">done</a>
-                    <a class="text-dark">todo</a>
+            <div *ngFor="let current of tasks">
+                <div class="alert alert-primary" role="alert" *ngIf="current.status == 'current'">
+                    <div class="row">
+                        <div class="col-auto">{{ current.id }}</div>
+                        <div class="col-7">{{ current.name }}</div>
+                        <div class="col-1">{{ current.created_at }}</div>
+                        <div class="col">{{ current.complete_by }}</div>
+                        <div class="col-1">
+                            <a class="badge badge-pill badge-secondary text-light" (click)="current.status='new'">new</a>
+                        </div>
+                        <div class="col-1">
+                            <a class="badge badge-pill badge-success text-light" (click)="current.status='done'">done</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <h5>New</h5>
-            <div *ngFor="let new of new_tasks">
-                <div class="alert alert-dark" role="alert">
-                    {{ new.id }} {{ new.name }} {{ new.created_at }} {{ new.complete_by }}  
-                    <a class="text-danger">current</a>
-                    <a class="text-success">done</a>
+            <div *ngFor="let new of tasks">
+                <div class="alert alert-dark" role="alert" *ngIf="new.status == 'new'">
+                    <div class="row">
+                        <div class="col-auto">{{ new.id }}</div>
+                        <div class="col-7">{{ new.name }}</div>
+                        <div class="col-1">{{ new.created_at }}</div>
+                        <div class="col">{{ new.complete_by }}</div>
+                        <div class="col-1">
+                            <a class="badge badge-pill badge-success text-light" (click)="new.status='done'">done</a>
+                        </div>
+                        <div class="col-1">
+                            <a class="badge badge-pill badge-primary text-light" (click)="new.status='current'">current</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <h5>Done</h5>
-            <div *ngFor="let done of done_tasks">
-                <div class="alert alert-success" role="alert">
-                    {{ done.id }} {{ done.name }} {{ done.created_at }} {{ done.complete_by }}  
-                    <a class="text-danger">current</a>
-                    <a class="text-dark">todo</a>
+            <div *ngFor="let done of tasks">
+                <div class="alert alert-success" role="alert" *ngIf="done.status == 'done'">
+                    <div class="row">
+                        <div class="col-auto">{{ done.id }}</div>
+                        <div class="col-7">{{ done.name }}</div>
+                        <div class="col-1">{{ done.created_at }}</div>
+                        <div class="col">{{ done.complete_by }}</div>
+                        <div class="col-1">
+                            <a class="badge badge-pill badge-secondary text-light" (click)="done.status='new'">new</a>
+                        </div>
+                        <div class="col-1">
+                            <a class="badge badge-pill badge-primary text-light" (click)="done.status='current'">current</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div [ngClass]="{ 'col' : chat, 'd-none' : !chat}" class="border">
-        <div class="card">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-          </div>
-        
+    <div [ngClass]="{ 'col' : chat, 'd-none' : !chat}">
+        <div class="row">
+            <div class="col-11">
+                <app-project-chat></app-project-chat>
+            </div>
+        </div>
     </div>
 </div>

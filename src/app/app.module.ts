@@ -8,6 +8,7 @@ import { ProjectComponent } from './project/project.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { HomeBaseComponent } from './home/home-base/home-base.component';
 import { HomeNotificationsComponent } from './home/home-notifications/home-notifications.component';
+import { ProjectChatComponent } from './project/project-chat/project-chat.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HomeNotificationsComponent } from './home/home-notifications/home-notif
     ProjectComponent,
     TasksComponent,
     HomeBaseComponent,
-    HomeNotificationsComponent
+    HomeNotificationsComponent,
+    ProjectChatComponent
   ],
   imports: [
     BrowserModule

@@ -23,7 +23,7 @@ export class HomeBaseComponent implements OnInit {
   ]
   current_tasks = [
     {'id': 1, 'name': 'bugs in file 3 at line 17', 'created_at': 'Date', 'complete_by': 'Date'},
-    {'id': 2, 'name': 'bugs in file 3 at line 17', 'created_at': 'Date', 'complete_by': 'Date'},
+    {'id': 2, 'name': 'bugs in file 3 at line 17', 'created_at': 'Date', 'complete_by': 'Date'}
   ]
 
 

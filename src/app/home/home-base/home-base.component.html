@@ -1,42 +1,74 @@
-<div>
-    <div class="row">
-        <div class="col-2">
-            <h3>Projects</h3>
-        </div>
-        <div class="col-1">
-            <button class="btn btn-outline-success mt-1">add</button>
-        </div>
-        <div class="col">
-            <button class="btn btn-outline-danger mt-1">delete</button>
-        </div>
-    </div>
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-3 mb-3" *ngFor="let project of projects">
-                <div class="card border-info">
-                    <div class="card-body text-info">
-                        <h5 class="card-title ">{{ project.name }}</h5>
-                        <hr>
-                        <a href="#" class="card-link">open</a>
+<div class="container mt-4">
+    <form>
+        <div class="form-row justify-content-center">
+            <div class="col-5">
+                <input type="text" class="form-control" placeholder="You can create a project here">
+            </div>
+            <div class="col-auto">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">@</div>
                     </div>
-                    <div class="card-footer text-info border-info text-center">{{ project.category }} project</div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Add your groupmates">
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-outline-secondary">Submit</button>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Projects</h3>
+            </div>
+            <div class="col-auto">
+                <a href="#" class="badge badge-secondary">show hidden</a>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-3 mb-3" *ngFor="let project of projects">
+                    <div class="card border-info">
+                        <div class="card-body text-info">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title">{{ project.name }}</h5>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="#" class="badge badge-info">hide</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-info border-top-0 border-info text-center">created at </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<br>
-<hr>
-<div>
-    <h3>Tasks</h3>
-    <div class="container">
-        <h5>Current</h5>
-        <div *ngFor="let current of current_tasks">
-            <div class="alert alert-primary" role="alert">
-                {{ current.id }} {{ current.name }} {{ current.created_at }} {{ current.complete_by }}
-                <a class="text-dark">todo</a>
-                <a class="text-success">done</a>
+    
+    <br>
+    <hr>
+    <div>
+        <h3>Tasks</h3>
+        <div>
+            <h5>Current</h5>
+            <div *ngFor="let current of current_tasks">
+                <div class="alert alert-primary" role="alert">
+                    <div class="row">
+                        <div class="col-auto">{{ current.id }}</div>
+                        <div class="col-7">{{ current.name }}</div>
+                        <div class="col-1">{{ current.created_at }}</div>
+                        <div class="col">{{ current.complete_by }}</div>
+                        <div class="col-1">
+                            <a class="badge badge-pill badge-secondary text-light" (click)="current.status='new'">new</a>
+                        </div>
+                        <div class="col-1">
+                            <a class="badge badge-pill badge-success text-light" (click)="current.status='done'">done</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

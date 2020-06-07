@@ -1,17 +1,20 @@
 
 <div class="row vh-100">
-  <div class="col-2 bg-secondary">
+  <div class="col-auto bg-secondary">
     <nav class="navbar flex-column">
-      <a class="navbar-brand text-light" href="#" (click)="onClick($event)">ProGeNt</a>
-      <nav class="nav flex-column">
+      <a class="navbar-brand text-light" href="#" (click)="onClick($event)">Track Project</a>
+      <nav class="nav flex-column" style="height: 650px;">
         <a class="nav-link text-light" href="#" (click)="onClick($event)">home</a>
         <a class="nav-link text-light" href="#" (click)="onClick($event)">tasks</a>
         <a class="nav-link text-light" href="#" (click)="onClick($event)">project</a>
+        <a class="nav-link text-light mt-auto"><i>@Suresh8</i></a>
+        <a class="nav-link text-light">sign out</a>
+        <a class="nav-link text-light">Settings</a>
       </nav>
     </nav>
   </div>
 
-  <div class="col-10 bg-white">
+  <div class="col bg-white">
     <div class="row">
       <div class="col-11">
         <app-home *ngIf="display=='home'"></app-home>
