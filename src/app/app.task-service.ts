@@ -1,10 +1,10 @@
 export class Task {
-    id: number;
-    name: String;
-    created_by: String;
-    assigned_to: String[];
-    created_at: Date;
-    complete_by: Date;
-    status: String;
-    category: String;
+    constructor(
+        public id: number, public name: String, public created_by: String, public assigned_to: String[], 
+        public created_at: Date, public complete_by: Date, public status: String, public category: String
+        ) { }
+        
+        
 }
+
+

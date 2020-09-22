@@ -1,27 +1,17 @@
 
 <div class="row vh-100">
+
   <div class="col-auto bg-secondary">
-    <nav class="navbar flex-column">
-      <a class="navbar-brand text-light" href="#" (click)="onClick($event)">Track Project</a>
-      <nav class="nav flex-column" style="height: 650px;">
-        <a class="nav-link text-light" href="#" (click)="onClick($event)">home</a>
-        <a class="nav-link text-light" href="#" (click)="onClick($event)">tasks</a>
-        <a class="nav-link text-light" href="#" (click)="onClick($event)">project</a>
-        <a class="nav-link text-light mt-auto"><i>@Suresh8</i></a>
-        <a class="nav-link text-light">sign out</a>
-        <a class="nav-link text-light">Settings</a>
-      </nav>
-    </nav>
+    <app-nav-main></app-nav-main>
   </div>
 
   <div class="col bg-white">
     <div class="row">
       <div class="col-11">
-        <app-home *ngIf="display=='home'"></app-home>
-        <app-tasks *ngIf="display=='tasks'"></app-tasks>
+        <router-outlet></router-outlet>
       </div>
     </div>
-    <app-project *ngIf="display=='project'"></app-project>
   </div>
+
 </div>
 
