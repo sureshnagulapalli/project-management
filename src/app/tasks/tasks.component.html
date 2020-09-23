@@ -1,20 +1,22 @@
 <nav class="nav nav-tabs justify-content-center">
-    <a class="nav-link text-secondary" href="#" (click)="onClick('self')">My Personal Tasks</a>
-    <a class="nav-link text-secondary" href="#" (click)="onClick('project')">My Project Tasks</a>
-    <a class="nav-link text-secondary" href="#" (click)="onClick('all')">All Tasks</a>
+    <a class="nav-link text-secondary" (click)="onClick('self')">My Personal Tasks</a>
+    <a class="nav-link text-secondary" (click)="onClick('project')">My Project Tasks</a>
+    <a class="nav-link text-secondary" (click)="onClick('all')">All Tasks</a>
 </nav>
 
 
 <div class="container mt-4">
-    <form>
+    <form (ngSubmit)="onCreate()">
         <div class="form-row">
             <div class="col-1"></div>
             <div class="col-6">
-                <input type="text" class="form-control" placeholder="You can assign a task here">
+                <input type="text" class="form-control" id="name" [(ngModel)]="task.name" name="name"
+                required placeholder="You can assign a task here">
             </div>
             
             <div class="col-auto">
-                <input type="date" class="form-control" placeholder="due by">
+                <input type="date" class="form-control" id="complete_by" [(ngModel)]="task.complete_by" name="complete_by"
+                placeholder="due by">
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-outline-secondary">Submit</button>
@@ -24,7 +26,7 @@
     </form>
     <hr>
     <h5>Current</h5>
-    <div *ngFor="let current of tasks">
+    <div *ngFor="let current of tasks | async">
         <div class="alert alert-primary" role="alert" *ngIf="current.status == 'current'">
             <div class="row">
                 <div class="col-auto">{{ current.id }}</div>
@@ -32,16 +34,16 @@
                 <div class="col-1">{{ current.created_at }}</div>
                 <div class="col">{{ current.complete_by }}</div>
                 <div class="col-1">
-                    <button class="badge badge-pill badge-secondary text-light" (click)="current.status='new'">new</button>
+                    <button class="badge badge-pill badge-secondary text-light" (click)="onUpdate(current.id, 'new')">new</button>
                 </div>
                 <div class="col-1">
-                    <button class="badge badge-pill badge-success text-light" (click)="current.status='done'">done</button>
+                    <button class="badge badge-pill badge-success text-light" (click)="onUpdate(current.id, 'done')">done</button>
                 </div>
             </div>
         </div>
     </div>
     <h5>New</h5>
-    <div *ngFor="let new of tasks">
+    <div *ngFor="let new of tasks | async">
         <div class="alert alert-dark" role="alert" *ngIf="new.status =='new' ">
             <div class="row">
                 <div class="col-auto">{{ new.id }}</div>
@@ -49,16 +51,16 @@
                 <div class="col-1">{{ new.created_at }}</div>
                 <div class="col">{{ new.complete_by }}</div>
                 <div class="col-1">
-                    <button class="badge badge-pill badge-success text-light" (click)="new.status='done'">done</button>
+                    <button class="badge badge-pill badge-success text-light" (click)="onUpdate(new.id, 'done')">done</button>
                 </div>
                 <div class="col-1">
-                    <button class="badge badge-pill badge-primary text-light" (click)="new.status='current'">current</button>
+                    <button class="badge badge-pill badge-primary text-light" (click)="onUpdate(new.id, 'current')">current</button>
                 </div>
             </div>  
         </div>
     </div>
     <h5>Done</h5>
-    <div *ngFor="let done of tasks">
+    <div *ngFor="let done of tasks | async">
         <div class="alert alert-success" role="alert" *ngIf="done.status == 'done'">
             <div class="row">
                 <div class="col-auto">{{ done.id }}</div>
@@ -66,10 +68,10 @@
                 <div class="col-1">{{ done.created_at }}</div>
                 <div class="col">{{ done.complete_by }}</div>
                 <div class="col-1">
-                    <button class="badge badge-pill badge-secondary text-light" (click)="done.status='new'">new</button>
+                    <button class="badge badge-pill badge-secondary text-light" (click)="onUpdate(done.id, 'new')">new</button>
                 </div>
                 <div class="col-1">
-                    <button class="badge badge-pill badge-primary text-light" (click)="done.status='current'">current</button>
+                    <button class="badge badge-pill badge-primary text-light" (click)="onUpdate(done.id, 'current')">current</button>
                 </div>
             </div>
         </div>
